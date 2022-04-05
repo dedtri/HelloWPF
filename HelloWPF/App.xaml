@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="RequiredLabel" TargetType="Label">
+        <!--<Style x:Key="RequiredLabel" TargetType="Label">
             <Setter Property="Foreground" Value="red" />
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontStyle" Value="Italic"/>
-        </Style>
+        </Style>-->
         
         <!--<Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="Green"></Setter>
@@ -30,7 +30,7 @@
             </Setter>
         </Style>-->
 
-        <Style x:Key="NormalButton" TargetType="Button">
+        <!--<Style x:Key="NormalButton" TargetType="Button">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background">
@@ -57,7 +57,7 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
 
     </Application.Resources>
 </Application>

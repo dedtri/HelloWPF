@@ -32,7 +32,10 @@ namespace HelloWPF
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
+            if (firstNameText.Text != string.Empty)
             MessageBox.Show("Hello " + firstNameText.Text + " " + lastNameText.Text);
+            else
+                MessageBox.Show("ERROR");
         }
     }
 }

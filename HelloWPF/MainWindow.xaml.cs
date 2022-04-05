@@ -21,7 +21,7 @@ namespace HelloWPF
     public partial class MainWindow : Window
     {
 
-        double x = 0, y = 0, z = 0;
+        double x = 0, y = 0, z = 0, d = 0;
         Random random = new Random();
 
         public MainWindow()
@@ -67,13 +67,23 @@ namespace HelloWPF
 
         private void spawn_Button_Click(object sender, RoutedEventArgs e)
         {
-            int randompositionX = random.Next(5);
-            int randompositionY = random.Next(5);
+            int randompositionX = random.Next(2,11);
+            int randompositionY = random.Next(2,11);
 
             panel.Background = new SolidColorBrush(Colors.Red);
         
-            AddButton("XD", randompositionX, randompositionY, gridmap);
+            AddButton("xD", randompositionX, randompositionY, gridmap);
+
+            d++;
+
+            if (d > 5)
+            { 
+            gridmap.Children.Clear();
+                d = 0;
+            }
+
         }
+
 
         Button AddButton(string caption, int row, int column, Grid parent)
         {

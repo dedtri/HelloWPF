@@ -1,0 +1,29 @@
+﻿<Window x:Class="HelloWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:HelloWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="800" Background="Red">
+    <Window.Resources>
+        <sys:String x:Key="strTest">Hello, world!</sys:String>
+        <sys:String x:Key="boxTitle">Items:</sys:String>
+    </Window.Resources>
+    
+    <StackPanel Margin="10" Height="350" Name="pnlMainGrid" MouseUp="pnlMainGrid_MouseUp" Background="LightBlue">
+        <TextBlock TextAlignment="Center" FontSize="72" Foreground="red" Background="black" Text="{StaticResource strTest}"/>
+        <TextBlock TextAlignment="Center" Text="{Binding Mode=OneWay, Source={StaticResource strTest}}"/>
+   
+
+        <Button Height="100" Width="100" FontWeight="Bold">
+            <WrapPanel>
+                <TextBlock Foreground="Aqua">Hey</TextBlock>
+                <TextBlock Foreground="Red">Brother</TextBlock>
+                <TextBlock>Button</TextBlock>
+            </WrapPanel>
+        </Button>
+
+    </StackPanel>
+</Window>

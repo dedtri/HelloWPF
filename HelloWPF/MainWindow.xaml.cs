@@ -29,5 +29,10 @@ namespace HelloWPF
         {
             MessageBox.Show("You clicked me at " + e.GetPosition(this).ToString());
         }
+
+        private void submitButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hello " + firstNameText.Text + " " + lastNameText.Text);
+        }
     }
 }

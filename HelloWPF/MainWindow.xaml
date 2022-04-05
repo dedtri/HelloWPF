@@ -5,25 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:HelloWPF"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="800" Background="Red">
+        mc:Ignorable="d" Foreground="white" FontFamily="Sketchflow Pri"
+        Title="My WPF App" Height="350" Width="750" Background="Red">
     <Window.Resources>
-        <sys:String x:Key="strTest">Hello, world!</sys:String>
-        <sys:String x:Key="boxTitle">Items:</sys:String>
+
     </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="45" FontWeight="Bold" Grid.ColumnSpan="6" Margin="0,0,0,15" Text="Application Form"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="20" >First Name</TextBlock>
+        <TextBox x:Name="firstNameText" Grid.Row="2" Grid.Column="2" Width="140" Margin="20,0"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="20" >Last Name</TextBlock>
+        <TextBox x:Name="lastNameText" Grid.Row="3" Grid.Column="2" Width="140" Margin="20,0"></TextBox>
+        <Button x:Name="submitButton" Width="70" Grid.Column="3" Grid.Row="2" Content="Submit" Grid.RowSpan="5" Margin="10" Foreground="black"
+                 Background="blue" FontWeight="bold" FontSize="15" Click="submitButton_Click"/>
+
+        <TextBlock VerticalAlignment="Center" Margin="10" Grid.Row="1" Grid.Column="5" FontSize="20" Grid.ColumnSpan="2" TextWrapping="Wrap" >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</TextBlock>
+
+    </Grid>
     
-    <StackPanel Margin="10" Height="350" Name="pnlMainGrid" MouseUp="pnlMainGrid_MouseUp" Background="LightBlue">
-        <TextBlock TextAlignment="Center" FontSize="72" Foreground="red" Background="black" Text="{StaticResource strTest}"/>
-        <TextBlock TextAlignment="Center" Text="{Binding Mode=OneWay, Source={StaticResource strTest}}"/>
-   
 
-        <Button Height="100" Width="100" FontWeight="Bold">
-            <WrapPanel>
-                <TextBlock Foreground="Aqua">Hey</TextBlock>
-                <TextBlock Foreground="Red">Brother</TextBlock>
-                <TextBlock>Button</TextBlock>
-            </WrapPanel>
-        </Button>
-
-    </StackPanel>
 </Window>

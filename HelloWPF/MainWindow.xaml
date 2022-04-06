@@ -43,11 +43,13 @@
         <TextBox Style="{StaticResource NameBox}"/>
         <Label Content="Last Name" />
         <TextBox Style="{StaticResource NameBox}"/>-->
-        <Button x:Name="difficultyButton" Style="{StaticResource ButtonStyle}" Content="NORMAL MODE" Click="Button_Click" HorizontalAlignment="Center" />
-        <TextBlock x:Name="gameTitle" TextAlignment="center" Width="300" FontSize="20" FontWeight="light" Text="CLICK THE SQUARES!" Margin="0, 15, 20, 0"/>
-        <Button x:Name="spawn" Style="{StaticResource ButtonStyle}" Content="START" Click="spawn_Button_Click" HorizontalAlignment="Center" />
-        <TextBlock x:Name="tbTime" TextAlignment="center" Width="100" FontSize="15" FontWeight="bold" Text="" Margin="0, 15, 20, 0"/>
-
+        <Grid>
+        <Button Margin="400, 20, 0, 20" x:Name="difficultyButton" Style="{StaticResource ButtonStyle}" Content="NORMAL MODE" Click="Button_Click" HorizontalAlignment="Center" />
+        <TextBlock Margin="90, 20, 20, 20" x:Name="gameTitle" TextAlignment="center" Width="300" FontSize="20" FontWeight="light" Text="CLICK THE SQUARES!" />
+        <Button Margin="0, 20, 260, 20" x:Name="spawn" Style="{StaticResource ButtonStyle}" Content="START" Click="spawn_Button_Click" HorizontalAlignment="Center" />
+        <TextBlock Margin="65, 55, 0, 10" x:Name="tbTime" TextAlignment="center" Width="100" FontSize="15" FontWeight="bold" Text="" />
+            <TextBox Margin="20, 0" Width="100" Height="50" Name="SetTimer" HorizontalAlignment="Left" KeyDown="SetTimer_KeyDown"/>
+        </Grid>
 
 
         <Grid x:Name = "gridmap" HorizontalAlignment ="Center" VerticalAlignment ="Center">

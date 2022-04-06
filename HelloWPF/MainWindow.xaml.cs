@@ -24,6 +24,7 @@ namespace HelloWPF
     {
         double x = 0, y = 0, z = 0;
         int d = 0, points = 0;
+        public int tal = 0;
         int difficulty = 1;
         Random random = new Random();
         private List<Grid> DynamicGrids = new List<Grid>();
@@ -78,10 +79,7 @@ namespace HelloWPF
                 MessageBox.Show("CONGRAUTLATIONS!!!");
                 window.Background = new SolidColorBrush(Colors.White);           
                 points = 0;
-                gameTitle.Foreground = new SolidColorBrush(Colors.Black);
-                gameTitle.FontWeight = FontWeights.Light;
-                gameTitle.Text = "CLICK THE SQUARES!";
-                gameTitle.FontSize = 20;
+                UpdateStuff();
             }
         }
 
@@ -180,6 +178,13 @@ namespace HelloWPF
             }
         }
 
+        private void SetTimer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+               int.TryParse(SetTimer.Text, out int tal);
+            }
+        }
 
         public void AddButton(string name, string caption, int row, int column, Grid parent, int rowstr, int colstr)
         {

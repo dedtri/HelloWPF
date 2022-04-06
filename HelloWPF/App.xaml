@@ -8,14 +8,14 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontStyle" Value="Italic"/>
-        </Style>-->
+        </Style>
         
-        <!--<Style x:Key="ButtonStyle" TargetType="Button">
+        <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Foreground" Value="Green"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
-        </Style>-->
+        </Style>
 
-        <!--<Style TargetType="Button">
+        <Style TargetType="Button">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background">
@@ -28,9 +28,9 @@
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
-        </Style>-->
+        </Style>
 
-        <!--<Style x:Key="NormalButton" TargetType="Button">
+        <Style x:Key="NormalButton" TargetType="Button">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background">

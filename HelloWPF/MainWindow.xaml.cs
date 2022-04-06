@@ -112,7 +112,7 @@ namespace HelloWPF
                 window.Background = new SolidColorBrush(Colors.White);
                 points = 0;
                 valid = false;
-                _time = TimeSpan.FromSeconds(10);
+                _time = TimeSpan.FromSeconds(tal);
 
                 gameTitle.Foreground = new SolidColorBrush(Color.FromRgb((byte)(random.Next(256)), (byte)(random.Next(256)), (byte)(random.Next(256))));
                 gameTitle.FontWeight = FontWeights.Bold;
@@ -182,7 +182,7 @@ namespace HelloWPF
         {
             if (e.Key == Key.Enter)
             {
-               int.TryParse(SetTimer.Text, out int tal);
+               int.TryParse(SetTimer.Text, out int lol);
             }
         }
 

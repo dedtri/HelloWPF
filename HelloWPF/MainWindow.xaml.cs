@@ -22,19 +22,16 @@ namespace HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        double x = 0, y = 0, z = 0;
         int d = 0, points = 0;
         int amountButtons = 20;
         public int tal = 30;
         int difficulty = 1;
         Random random = new Random();
-        private List<Grid> DynamicGrids = new List<Grid>();
         DispatcherTimer _timer;
         TimeSpan _time;
-        bool valid = true;
+        bool valid = true, mode;
         ColumnDefinitionCollection columns;
         RowDefinitionCollection rows;
-        bool mode;
 
         public MainWindow()
         {
@@ -46,32 +43,6 @@ namespace HelloWPF
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-
-            //var relative = e.GetPosition(this);
-            //var point = PointToScreen(relative);
-
-            //x = point.X;
-            //y = point.Y;
-
-            x++;
-            z++;
-            y++;
-
-            //txt.Text = Convert.ToString(x);
-            txt.Foreground = new SolidColorBrush(Colors.Black);
-
-            
-            if (x > 200)
-            {
-                //panel.Background = new SolidColorBrush(Color.FromRgb((byte)(x*random.NextDouble()), (byte)(z*random.NextDouble()), (byte)(y*random.NextDouble())));
-                //panel.Background = new SolidColorBrush(Color.FromRgb((byte)x,(byte)z,(byte)y));
-            }
-            else
-            {
-            }
-
-            txt.FontSize = 20;
-
             if (points == amountButtons)
             {
                 _time = TimeSpan.Zero;
@@ -88,7 +59,6 @@ namespace HelloWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             mode = !mode;
 
             if (mode)
@@ -101,10 +71,6 @@ namespace HelloWPF
                 difficulty = 1;
                 difficultyButton.Content = "NORMAL MODE";
             }
-
-            //window.Background = new SolidColorBrush(Color.FromRgb((byte)(x*random.NextDouble()), (byte)(z*random.NextDouble()), (byte)(y*random.NextDouble())));
-
-            //_time = TimeSpan.Zero;
         }
 
         private void spawn_Button_Click(object sender, RoutedEventArgs e)
@@ -260,7 +226,6 @@ namespace HelloWPF
                 {
                 gridmap.Children.Remove(ch as Button);
                 points++;
-                //pointBlock.Text = points.ToString();
                 }
                 Grid.SetColumn(ch, (int)(random.Next(0, 11)));
                 Grid.SetRow(ch, (int)(random.Next(0, 11)));
@@ -314,12 +279,5 @@ namespace HelloWPF
 
             gameTitle.Margin = m;
         }
-
-
-
-        //private void panel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    MessageBox.Show("hehe");
-        //}
     }
 }

@@ -37,12 +37,10 @@
         </Style>
     </Window.Resources>
 
+    <!--Stackpanel er hele mit vindue, jeg har oprettet den til at få flere childs i, i stedet for et grid-->
+    
     <StackPanel x:Name="panel">
 
-        <!--<Label Content="First Name" />
-        <TextBox Style="{StaticResource NameBox}"/>
-        <Label Content="Last Name" />
-        <TextBox Style="{StaticResource NameBox}"/>-->
         <Grid>
         <Button Margin="400, 20, 0, 20" x:Name="difficultyButton" Style="{StaticResource ButtonStyle}" FontSize="10" Content="NORMAL MODE" Click="Button_Click" HorizontalAlignment="Center" />
         <TextBlock Margin="90, 20, 20, 20" x:Name="gameTitle" TextAlignment="center" Width="300" FontSize="20" FontWeight="light" Text="SQUARE ATTACK" />
@@ -51,7 +49,6 @@
             <TextBlock Margin="672,2,28,48" TextWrapping="Wrap" Width="90" Height="30" x:Name="SetTimerText" TextAlignment="Center" FontWeight="Bold" FontSize="10" Text="Adjust your timer! EASY (30s)"/>
             <TextBox Margin="670, 20, 0, 0" Width="100" Height="25" x:Name="SetTimer" HorizontalAlignment="Left" KeyDown="SetTimer_KeyDown"/>
         </Grid>
-
 
         <Grid x:Name = "gridmap" HorizontalAlignment ="Center" VerticalAlignment ="Center">
             <Grid.ColumnDefinitions>
@@ -79,11 +76,6 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
-
-            <TextBlock x:Name="pointBlock" Text="" TextAlignment="center" Width="100" FontSize="15" FontWeight="bold"/>
-
-            <TextBlock x:Name="txt" Text="" TextAlignment="center" Width="100" FontSize="15" FontWeight="bold"/>
         </Grid>
     </StackPanel>
 </Window>

@@ -24,7 +24,8 @@ namespace HelloWPF
     {
         double x = 0, y = 0, z = 0;
         int d = 0, points = 0;
-        public int tal = 0;
+        int amountButtons = 20;
+        public int tal = 30;
         int difficulty = 1;
         Random random = new Random();
         private List<Grid> DynamicGrids = new List<Grid>();
@@ -71,10 +72,12 @@ namespace HelloWPF
 
             txt.FontSize = 20;
 
-            if (points == 15)
+            if (points == amountButtons)
             {
                 _time = TimeSpan.Zero;
                 window.Background = new SolidColorBrush(Colors.Green);
+                HideStuff();
+                MoveTitle();
                 gameTitle.Text = "YOU'RE INSANEEEEEE!!!!!";
                 MessageBox.Show("CONGRAUTLATIONS!!!");
                 window.Background = new SolidColorBrush(Colors.White);           
@@ -91,7 +94,7 @@ namespace HelloWPF
             if (mode)
             { 
             difficulty = 2;
-            difficultyButton.Content = "HARD MODE";
+            difficultyButton.Content = "CHALLENGE MODE";
             }
             else
             {
@@ -141,10 +144,12 @@ namespace HelloWPF
                         _timer.Stop();
                         gridmap.Children.Clear();
                         valid = true;
-                        if (points < 15)
+                        if (points < amountButtons)
                         {
                             window.Background = new SolidColorBrush(Colors.Red);
-                            gameTitle.Text = "YOU FUCKING SNAIL";
+                            HideStuff();
+                            MoveTitle();
+                            gameTitle.Text = "TOO BAD!";
                             MessageBox.Show("YOU LOSE!!!");
                             UpdateStuff();
                         }
@@ -157,7 +162,7 @@ namespace HelloWPF
 
                 gridmap.Children.Clear();
 
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < amountButtons; i++)
                 {
                     _timer.Start();
                     int randompositionY = random.Next(0, 11);
@@ -173,16 +178,49 @@ namespace HelloWPF
                 UpdateStuff();
                 _time = TimeSpan.Zero;
                 gridmap.Children.Clear();
-                points = 16;
+                points = amountButtons+1;
                 bool valid = true;
             }
         }
 
         private void SetTimer_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.Key == Key.Enter)
             {
-               int.TryParse(SetTimer.Text, out int lol);
+                try
+                {
+                    if (Convert.ToInt32(SetTimer.Text) <= 30)
+                    { 
+                    tal = Convert.ToInt32(SetTimer.Text);
+                        MessageBox.Show("Your time is now: " + SetTimer.Text + " " + "seconds.");
+                        if (Convert.ToInt32(SetTimer.Text) >= 21)
+                        {
+                            SetTimerText.Text = "Adjust your timer! EASY (" + SetTimer.Text + "s)";
+                            SetTimerText.Foreground = new SolidColorBrush(Colors.Green);
+                        }
+                        else if (Convert.ToInt32(SetTimer.Text) >= 11)
+                        {
+                            SetTimerText.Text = "Adjust your timer! MEDIUM (" + SetTimer.Text + "s)";
+                            SetTimerText.Foreground = new SolidColorBrush(Colors.Blue);
+                        }
+                        else if (Convert.ToInt32(SetTimer.Text) >= 0)
+                        {
+                            SetTimerText.Text = "Adjust your timer! HARD (" + SetTimer.Text + "s)";
+                            SetTimerText.Foreground = new SolidColorBrush(Colors.Red);
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("MAX 30 SECONDS!");
+                    }
+                }
+                  catch
+                {
+                    MessageBox.Show("Non actual number detected.");
+                }
             }
         }
 
@@ -234,12 +272,50 @@ namespace HelloWPF
 
         private void UpdateStuff()
         {
+            Thread.Sleep(200);
+
             window.Background = new SolidColorBrush(Colors.White);
             gameTitle.Foreground = new SolidColorBrush(Colors.Black);
             gameTitle.FontWeight = FontWeights.Light;
             gameTitle.FontSize = 20;
             gameTitle.Text = "CLICK THE SQUARES!";
+
+            Thickness m = gameTitle.Margin;
+            m.Left = 90;
+            m.Top = 20;
+            m.Right = 20;
+            m.Bottom = 20;
+                                             
+            gameTitle.Margin = m;
+
+            difficultyButton.Visibility = Visibility.Visible;
+            spawn.Visibility = Visibility.Visible;
+            tbTime.Visibility = Visibility.Visible;
+            SetTimer.Visibility = Visibility.Visible;
+            SetTimerText.Visibility = Visibility.Visible;
         }
+
+        private void HideStuff()
+        {
+            difficultyButton.Visibility = Visibility.Hidden;
+            spawn.Visibility = Visibility.Hidden;
+            tbTime.Visibility = Visibility.Hidden;
+            SetTimer.Visibility = Visibility.Hidden;
+            SetTimerText.Visibility = Visibility.Hidden;
+        }
+
+        private void MoveTitle()
+        {
+            Thickness m = gameTitle.Margin;
+            m.Left = 90;
+            m.Top = 300;
+            m.Right = 20;
+            m.Bottom = 20;
+
+            gameTitle.Margin = m;
+        }
+
+
 
         //private void panel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         //{

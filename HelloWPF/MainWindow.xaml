@@ -9,16 +9,8 @@
 >
 
     <Window.Resources>
-        <Style x:Key="NameBox" TargetType="TextBox">
-            <Setter Property="Background" Value="AntiqueWhite"/>
-            <Setter Property="Margin" Value="5 0 5 5"/>
 
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Background" Value="Red" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <!--Stylings til mine buttons-->
 
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -37,20 +29,29 @@
         </Style>
     </Window.Resources>
 
-    <!--Stackpanel er hele mit vindue, jeg har oprettet den til at få flere childs i, i stedet for et grid-->
+    
+    <!--Stackpanel er hele mit vindue, jeg har oprettet den til at 
+    få flere childs i, i stedet for et grid-->
     
     <StackPanel x:Name="panel">
 
+        <!--Menu field grid-->
+        
         <Grid>
         <Button Margin="400, 20, 0, 20" x:Name="difficultyButton" Style="{StaticResource ButtonStyle}" FontSize="10" Content="NORMAL MODE" Click="Button_Click" HorizontalAlignment="Center" />
         <TextBlock Margin="90, 20, 20, 20" x:Name="gameTitle" TextAlignment="center" Width="300" FontSize="20" FontWeight="light" Text="SQUARE ATTACK" />
         <Button Margin="0, 20, 260, 20" x:Name="spawn" Style="{StaticResource ButtonStyle}" Content="START" Click="spawn_Button_Click" HorizontalAlignment="Center" />
             <TextBlock Margin="65, 55, 0, 10" x:Name="tbTime" TextAlignment="center" Width="100" FontSize="15" FontWeight="bold" Text="" />
-            <TextBlock Margin="672,2,28,48" TextWrapping="Wrap" Width="90" Height="30" x:Name="SetTimerText" TextAlignment="Center" FontWeight="Bold" FontSize="10" Text="Adjust your timer! EASY (30s)"/>
+            <TextBlock Margin="672,2,28,48" TextWrapping="Wrap" Width="90" Height="30" x:Name="SetTimerText" TextAlignment="Center" FontWeight="Bold" FontSize="10" Text="Adjust your timer! MEDIUM (15s)"/>
             <TextBox Margin="670, 20, 0, 0" Width="100" Height="25" x:Name="SetTimer" HorizontalAlignment="Left" KeyDown="SetTimer_KeyDown"/>
         </Grid>
+        
+        <!--Playing field grid-->
 
         <Grid x:Name = "gridmap" HorizontalAlignment ="Center" VerticalAlignment ="Center">
+
+            <!--Definer en bestemt antal kolonner og rækker der skal være i mit grid-->
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />

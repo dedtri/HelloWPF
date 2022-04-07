@@ -22,9 +22,11 @@ namespace HelloWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Deklarationer
+
         int d = 0, points = 0;
         int amountButtons = 20;
-        public int tal = 30;
+        public int tal = 15;
         int difficulty = 1;
         Random random = new Random();
         DispatcherTimer _timer;
@@ -32,7 +34,7 @@ namespace HelloWPF
         bool valid = true, mode;
         ColumnDefinitionCollection columns;
         RowDefinitionCollection rows;
-
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +42,8 @@ namespace HelloWPF
             columns = gridmap.ColumnDefinitions;
             rows = gridmap.RowDefinitions;
         }
+
+        //Min "win" checker, det er en MouseMove funktion, dvs at den tjekker hele tiden mens man bevæger musen.
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
@@ -57,6 +61,8 @@ namespace HelloWPF
             }
         }
 
+        //ButtonClick function som aktiveres ved at trykke på knappen. Den styer om det skal være nemt eller svært.
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             mode = !mode;
@@ -73,6 +79,8 @@ namespace HelloWPF
             }
         }
 
+        //Endnu en ButtonClick function som aktiveres ved at trykke på knappen dog med andre funktioner.
+
         private void spawn_Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -83,13 +91,22 @@ namespace HelloWPF
                 valid = false;
                 _time = TimeSpan.FromSeconds(tal);
 
+                //Når man skal ændre properties i C# "code behind" delen, skal man bruge nogle andre syntaxer og objekter, f.eks. SolidColorBrush
+                //Her opdaterer jeg min game title efter "spillet" er gået i gang med en tilfældig RGB farve
+
                 gameTitle.Foreground = new SolidColorBrush(Color.FromRgb((byte)(random.Next(256)), (byte)(random.Next(256)), (byte)(random.Next(256))));
                 gameTitle.FontWeight = FontWeights.Bold;
                 gameTitle.Text = "GO GO GO!!!!";
                 gameTitle.FontSize = 25;
 
+
+                //Her er "playing field" sat til at opdatere vinduet efter man trykker på "START" knappen, så størrelsen på "gridmap" er dynamisk
+
                 gridmap.MaxHeight = window.ActualHeight * 0.70;
                 gridmap.MaxWidth = window.ActualWidth * 0.85;
+
+                //Her adjuster jeg mine individuelle kolonner og rækker til at justere sig til gridmap's størrelse
+
                 int columstr = (int)gridmap.MaxWidth / gridmap.ColumnDefinitions.Count;
                 int rowstr = (int)gridmap.MaxHeight / gridmap.RowDefinitions.Count;
 
@@ -101,6 +118,9 @@ namespace HelloWPF
                 {
                     row.Height = new GridLength(rowstr);
                 }
+
+                //Her er min "timer" som begynder efter man trykker på knappen, det er funktionen der 
+                //Den er også med til at meddele at man har tabt, hvis timeren rammer 0 før man har clearet alle buttons
 
                 _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                 {
@@ -124,9 +144,13 @@ namespace HelloWPF
                     
                 }, Application.Current.Dispatcher); _timer.Start();
 
+                //Pågrund af hvordan TimeSpan og DispatcherTimer fungerer har jeg tilføjet en lille forsinkelse til ta få dem til at sync op med kreationen af knapperne
+
                 Thread.Sleep(900);
 
                 gridmap.Children.Clear();
+
+                //Loop til sende parameter afsted til min AddButton funktion og køre den.
 
                 for (int i = 0; i < amountButtons; i++)
                 {
@@ -137,6 +161,9 @@ namespace HelloWPF
                 }
 
             }
+
+            //Hele knappen er i en if/else, hvis der stadig er knapper tilbage hvis man trykker på START, så får man en error besked
+
             else
             {
                 window.Background = new SolidColorBrush(Colors.Red);
@@ -148,6 +175,10 @@ namespace HelloWPF
                 bool valid = true;
             }
         }
+
+
+        //Funktion til at styre ens "timer", En Textbox man kan skrive i, og når man trykker enter sender den informationen afsted
+        //Så bruger man SetTimer.Text til at justere tiden
 
         private void SetTimer_KeyDown(object sender, KeyEventArgs e)
         {
@@ -190,6 +221,8 @@ namespace HelloWPF
             }
         }
 
+        //Min AddButton funktion, som creater de forskellige knapper der kommer ind på ens playing field når loopet i "START" knappen starter.
+
         public void AddButton(string name, string caption, int row, int column, Grid parent, int rowstr, int colstr)
         {
 
@@ -208,6 +241,8 @@ namespace HelloWPF
                 parent.Children.Add(button);
 
         }
+
+        //Funktionen til at slette knapper man trykker på
 
         private void test_Read_Click(object sender, RoutedEventArgs e)
         {
@@ -235,6 +270,8 @@ namespace HelloWPF
 
         }
 
+        //Update metode til at spare noget kode
+
         private void UpdateStuff()
         {
             Thread.Sleep(200);
@@ -243,7 +280,7 @@ namespace HelloWPF
             gameTitle.Foreground = new SolidColorBrush(Colors.Black);
             gameTitle.FontWeight = FontWeights.Light;
             gameTitle.FontSize = 20;
-            gameTitle.Text = "CLICK THE SQUARES!";
+            gameTitle.Text = "SQUARE ATTACK";
 
             Thickness m = gameTitle.Margin;
             m.Left = 90;
@@ -259,6 +296,8 @@ namespace HelloWPF
             SetTimer.Visibility = Visibility.Visible;
             SetTimerText.Visibility = Visibility.Visible;
         }
+
+        //Funktionen HideStuff hjælper med at cleane mit MainWindow for kun at vise min "titel" som bliver opdateret dynamisk med indhold og position.
 
         private void HideStuff()
         {
